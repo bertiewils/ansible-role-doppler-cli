@@ -4,6 +4,7 @@
   ansible.builtin.get_url:
     url: https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key
     dest: /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub
+    mode: '0644'
   become: true
 
 - name: Add Doppler apk repo
