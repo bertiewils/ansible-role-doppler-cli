@@ -1,0 +1,20 @@
+---
+
+- name: Add Doppler GPG key
+  ansible.builtin.rpm_key:
+    key: https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key
+    state: present
+  become: true
+
+- name: Add Doppler rpm repo config
+  ansible.builtin.get_url:
+    url: https://packages.doppler.com/public/cli/config.rpm.txt
+    dest: /etc/yum.repos.d/doppler-cli.repo
+  become: true
+
+- name: Install the Doppler CLI
+  ansible.builtin.yum:
+    name: doppler
+    state: latest
+    update_cache: true
+  become: true

@@ -1,2 +1,3 @@
-# ansible-role-doppler-cli
-An Ansible role to install the Doppler CLI
+# Ansible role: Doppler CLI
+
+Installs the [Doppler](https://www.doppler.com) CLI.

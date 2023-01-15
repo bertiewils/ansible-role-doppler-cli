@@ -1,0 +1,29 @@
+---
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+    state: present
+  become: true
+
+- name: Add Doppler GPG key
+  ansible.builtin.apt_key:
+    url: https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key
+    state: present
+  become: true
+
+- name: Add Doppler apt repo
+  ansible.builtin.apt_repository:
+    repo: deb https://packages.doppler.com/public/cli/deb/debian any-version main
+    state: present
+  become: true
+
+- name: Install the Doppler CLI
+  ansible.builtin.apt:
+    name: doppler
+    state: present
+    update_cache: true
+  become: true

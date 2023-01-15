@@ -1,0 +1,19 @@
+---
+
+- name: Add Doppler RSA key
+  ansible.builtin.get_url:
+    url: https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key
+    dest: /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub
+  become: true
+
+- name: Add Doppler apk repo
+  ansible.builtin.lineinfile:
+    path: /etc/apk/repositories
+    regexp: '^https://packages.doppler.com/public/cli/alpine'
+    line: https://packages.doppler.com/public/cli/alpine/any-version/main
+  become: true
+
+- name: Install the Doppler CLI
+  ansible.builtin.package:
+    name: doppler
+    state: present
