@@ -15,6 +15,6 @@
 - name: Install the Doppler CLI
   ansible.builtin.yum:
     name: doppler
-    state: latest
+    state: present
     update_cache: true
   become: true
