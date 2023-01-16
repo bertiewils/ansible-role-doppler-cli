@@ -10,11 +10,12 @@
   ansible.builtin.get_url:
     url: https://packages.doppler.com/public/cli/config.rpm.txt
     dest: /etc/yum.repos.d/doppler-cli.repo
+    mode: '0644'
   become: true
 
 - name: Install the Doppler CLI
   ansible.builtin.yum:
     name: doppler
-    state: latest
+    state: present
     update_cache: true
   become: true

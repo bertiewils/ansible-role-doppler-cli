@@ -17,7 +17,7 @@
 
 - name: Add Doppler apt repo
   ansible.builtin.apt_repository:
-    repo: deb https://packages.doppler.com/public/cli/deb/debian any-version main
+    repo: deb https://packages.doppler.com/public/cli/deb/debian any-version main  # yamllint disable-line rule:line-length
     state: present
   become: true
 
