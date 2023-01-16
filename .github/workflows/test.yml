@@ -20,18 +20,16 @@ jobs:
           - ubuntu1804
           - debian11
           - debian10
-        python-version: [3.10, 3.11]
-      max-parallel: 4
 
     steps:
       - uses: actions/checkout@v3
         with:
           path: bertiewils.doppler-cli
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python3
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
