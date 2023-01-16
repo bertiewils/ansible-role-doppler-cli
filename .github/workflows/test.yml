@@ -1,0 +1,48 @@
+---
+
+name: Test
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - rockylinux8
+          - ubuntu2204
+          - ubuntu2004
+          - ubuntu1804
+          - debian11
+          - debian10
+        python-version: [3.10, 3.11]
+      max-parallel: 4
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: bertiewils.doppler-cli
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          # python3 -m pip install --upgrade pip
+          # python3 -m pip install -r requirements.txt
+          python3 -m pip install ansible molecule[docker] docker
+
+      - name: Test with molecule
+        run: |
+          molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
