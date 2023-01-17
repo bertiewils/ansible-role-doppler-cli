@@ -37,7 +37,7 @@ jobs:
 
       - name: Test with molecule
         run: |
-          pwd; ls; molecule test
+          cd bertiewils.doppler-cli; molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
