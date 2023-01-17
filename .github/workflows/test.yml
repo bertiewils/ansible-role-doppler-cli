@@ -37,7 +37,7 @@ jobs:
 
       - name: Test with molecule
         run: |
-          pwd; molecule test
+          pwd; ls; molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
