@@ -1,0 +1,16 @@
+---
+
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Get doppler version
+      ansible.builtin.command: doppler --version
+      changed_when: false
+      register: doppler_version
+
+    - name: Assert doppler version
+      ansible.builtin.assert:
+        that:
+          - "'v' in doppler_version.stdout"
