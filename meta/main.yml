@@ -1,0 +1,30 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: doppler_cli
+  author: bertiewils
+  description: "Install the Doppler CLI."
+  company: ""
+  license: "license (BSD, MIT)"
+  min_ansible_version: "2.4"
+  platforms:
+    - name: EL
+      versions:
+        - "7"
+        - "8"
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Alpine
+      version:
+        - all
+  galaxy_tags:
+    - credentials
+    - doppler
+    - passwords
+    - secrets
+    - security

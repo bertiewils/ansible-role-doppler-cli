@@ -2,7 +2,6 @@
 
 - name: Verify
   hosts: all
-  become: true
   tasks:
 
     - name: Get doppler version
@@ -10,7 +9,11 @@
       changed_when: false
       register: doppler_version
 
+    - name: Print doppler version
+      ansible.builtin.debug:
+        var: doppler_version.stdout
+
     - name: Assert doppler version
       ansible.builtin.assert:
         that:
-          - "'v' in doppler_version.stdout"
+          - doppler_version.stdout is version('v3.0.0', '>')

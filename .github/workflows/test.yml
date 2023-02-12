@@ -8,6 +8,10 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: 'bertiewils.doppler_cli'
+
 jobs:
   molecule:
     runs-on: ubuntu-latest
@@ -24,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: bertiewils.doppler-cli
+          path: bertiewils.doppler_cli
 
       - name: Set up Python3
         uses: actions/setup-python@v2
@@ -37,7 +41,7 @@ jobs:
 
       - name: Test with molecule
         run: |
-          cd bertiewils.doppler-cli; molecule test
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
