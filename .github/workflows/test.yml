@@ -31,7 +31,7 @@ jobs:
           path: bertiewils.doppler_cli
 
       - name: Set up Python3
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
