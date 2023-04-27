@@ -1,2 +1,2 @@
 ansible==7.5.0
-molecule[docker]==4.0.4
+molecule[docker]==5.0.0
